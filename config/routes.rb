@@ -1,4 +1,9 @@
 Guestbook::Application.routes.draw do
+  root to: "entries#index"
+  get "(:token)" => "entries#index"
+  get "entries(/:token)" => "entries#index"
+  resources :entries, only: [:create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

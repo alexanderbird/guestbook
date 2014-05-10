@@ -1,0 +1,36 @@
+<% unless flash.empty? %>
+<% flash.each do |key, value| %>
+  <%= key.to_s.capitalize + value %>
+<% end %>
+<% end %>
+<%= render 'form' %>
+<h1>Listing entries</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Signed At</th>
+      <th>Signee</th>
+      <th>Message</th>
+      <th>Optional email</th>
+      <th>Optional phone number</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entries.each do |entry| %>
+      <tr>
+        <td><%= entry.created_at.strftime("%c") %></td>
+        <td><%= entry.signee %></td>
+        <td><%= entry.message %></td>
+        <td><%= entry.optional_email %></td>
+        <td><%= entry.optional_phone_number %></td>
+        <% if @admin %>
+        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
