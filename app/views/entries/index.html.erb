@@ -26,7 +26,7 @@
         <td><%= entry.optional_email %></td>
         <td><%= entry.optional_phone_number %></td>
         <% if @admin %>
-        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', entry, method: :delete %></td>
         <% end %>
       </tr>
     <% end %>
